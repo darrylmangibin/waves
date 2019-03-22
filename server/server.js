@@ -27,6 +27,26 @@ const { admin } = require('./middleware/admin');
 // ===========================================
 //                  PRODUCTS
 // ===========================================
+
+// BY ARRIVAL
+
+
+// BY SELL
+app.get('/api/product/articles', (req, res) => {
+  let order = req.query.order ? req.query.order : 'asc';
+  let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
+  let limit = req.query.limit ? parseInt(req.query.limit) : 100;
+  Product.find()
+  .populate('brand')
+  .populate('wood')
+  .sort([[sortBy, order]])
+  .populate(limit)
+  .exec((err, articles) => {
+    if(err) return res.status(400).send(err);
+    res.send(articles)
+  })
+})
+
 app.get('/api/product/articles_by_id', (req, res) => {
   let type = req.query.type;
   let items = req.query.id;
