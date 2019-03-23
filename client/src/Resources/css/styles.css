@@ -393,6 +393,9 @@ footer .business_nfo .nfo {
     font-weight: 300;
     margin-top: 10px;
 }
+.featured_container .slick-slide {
+  height: 100vh;
+}
 
 /*============================
         FEATURED PROMOTION
