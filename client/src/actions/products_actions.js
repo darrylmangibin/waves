@@ -7,7 +7,7 @@ import {
 
  export function getProductsBySell() {
   // ?sortBy=sold&order=desc&limit=100
-  const request = axios.get(`${PRODUCT_SERVER}/articles?sortBy=sold&order=desc&limit=1`).then((response) => response.data)
+  const request = axios.get(`${PRODUCT_SERVER}/articles?sortBy=sold&order=desc&limit=4`).then((response) => response.data)
 
   return {
     type: GET_PRODUCTS_BY_SELL,
@@ -16,5 +16,10 @@ import {
  }
 
  export function getProductsByArrival() {
+  const request = axios.get(`${PRODUCT_SERVER}/articles?sortBy=createdAt&order=desc&limit=4`).then((response) => response.data)
 
+  return {
+    type: GET_PRODUCTS_BY_ARRIVAL,
+    payload: request
+  }
  }

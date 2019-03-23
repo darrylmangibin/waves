@@ -12,7 +12,8 @@ export default function(state={}, action) {
       }
       case GET_PRODUCTS_BY_ARRIVAL:
         return {
-          ...state
+          ...state,
+          byArrival: action.payload
         }
     default:
       return state

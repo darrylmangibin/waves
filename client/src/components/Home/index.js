@@ -7,7 +7,8 @@ import { getProductsBySell, getProductsByArrival } from '../../actions/products_
 class Home extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(getProductsBySell())
+    this.props.dispatch(getProductsBySell());
+    this.props.dispatch(getProductsByArrival())
   }
 
   render() {
