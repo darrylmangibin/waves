@@ -96,7 +96,7 @@ app.post('/api/product/brand',auth, admin, (req, res) => {
 app.get('/api/product/brands', (req, res) => {
   Brand.find({}, (err, brands) => {
     if(err) return res.status(400).send(err);
-    res.status(400).send(brands)
+    res.status(200).send(brands)
   })
 })
 
@@ -181,7 +181,7 @@ app.post('/api/users/login', (req, res) => {
   })
 })
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server running at ${port}`);
