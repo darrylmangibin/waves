@@ -167,14 +167,14 @@ app.post('/api/users/login', (req, res) => {
   console.log(res)
   User.findOne({ 'email': req.body.email }, (err, user) => {
     if(!user) {
-      return res.json({ loginSucess: false, message: 'Auth failed, email not found' });
+      return res.json({ loginSuccess: false, message: 'Auth failed, email not found' });
     }
     user.comparePassword(req.body.password, (err, isMatch) => {
-      if(!isMatch) return res.json({ loginSucess: 'false', message: 'Wrong Password' });
+      if(!isMatch) return res.json({ loginSuccess: 'false', message: 'Wrong Password' });
       user.generateToken((err, user) => {
         if(err) return res.status(400).send(err);
         res.cookie('w_auth', user.token).status(200).json({
-          loginSucess: true
+          loginSuccess: true
         })
       })
     })
