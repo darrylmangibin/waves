@@ -2,6 +2,8 @@ import {
   GET_PRODUCTS_BY_SELL,
   GET_PRODUCTS_BY_ARRIVAL,
   GET_BRANDS,
+  ADD_BRAND,
+  ADD_WOOD,
   GET_WOODS,
   GET_PRODUCTS_TO_SHOP,
   ADD_PRODUCT,
@@ -46,6 +48,18 @@ export default function(state={}, action) {
           ...state,
           addProduct: action.payload
         }
+      case ADD_BRAND:
+        return {
+          ...state,
+          addBrand: action.payload.success,
+          brands: action.payload.brands
+        }
+      case ADD_WOOD:
+      return {
+        ...state,
+        addWood: action.payload.success,
+        woods: action.payload.woods
+      }
     default:
       return state
   }
