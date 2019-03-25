@@ -9,7 +9,7 @@ const CardBlockShop = (props) => {
           <Card 
             key={card._id}
             { ...card }
-            grid={props.list}
+            grid={props.grid}
           />
       )
     }) : null
