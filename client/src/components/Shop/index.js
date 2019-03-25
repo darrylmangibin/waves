@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PageTop from '../utils/page_top';
 import { connect } from 'react-redux';
-import { getBrands, getWoods } from '../../actions/products_actions';
+import { getBrands, getWoods, getProductsToShop } from '../../actions/products_actions';
 import CollapseCheckbox from '../utils/collapseCheckbox';
 import CollapseRadio from '../utils/collapseRadio';
 
@@ -23,7 +23,13 @@ class Shop extends Component {
 
   componentDidMount() {
     this.props.dispatch(getBrands());
-    this.props.dispatch(getWoods())
+    this.props.dispatch(getWoods());
+    this.props.dispatch(getProductsToShop(
+      this.state.skip,
+      this.state.limit,
+      this.state.filters
+    ));
+    
   }
 
   handlePrice = (value) => {
@@ -38,6 +44,18 @@ class Shop extends Component {
     return array
   }
 
+  showFilteredResults = (filters) => {
+    this.props.dispatch(getProductsToShop(
+      0,
+      this.state.limit,
+      filters
+    )).then(() => {
+      this.setState({
+        skip: 0
+      })
+    })
+  }
+
   handleFilters = (filters, category) => {
     const newFilters = {...this.state.filters}
     newFilters[category] = filters;
@@ -46,14 +64,13 @@ class Shop extends Component {
       let priceValues = this.handlePrice(filters);
       newFilters[category] = priceValues;
     }
-
+    this.showFilteredResults(newFilters)
     this.setState({
       filters:newFilters
     })
   }
 
   render() {
-    console.log(this.state.filters)
     const products = this.props.products;
     return (
       <div>
