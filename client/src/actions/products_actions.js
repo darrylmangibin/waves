@@ -5,7 +5,9 @@ import {
     GET_PRODUCTS_BY_ARRIVAL,
     GET_BRANDS,
     GET_WOODS,
-    GET_PRODUCTS_TO_SHOP
+    GET_PRODUCTS_TO_SHOP,
+    ADD_PRODUCT,
+    CLEAR_PRODUCT
  } from './types';
 
  export function getProductsBySell() {
@@ -50,6 +52,21 @@ import {
   }
  }
 
+ export function addProduct(dataToSubmit) {
+   const request = axios.post(`${PRODUCT_SERVER}/article`, dataToSubmit).then(response => response.data)
+   return {
+     type: ADD_PRODUCT,
+     payload: request
+   }
+ }
+
+ export function clearProduct() {
+    return {
+      type: CLEAR_PRODUCT,
+      payload: ''
+    }
+ }
+
 ///////////////////////////////////////////////
 ////////           CATEGORIES
 //////////////////////////////////////////////
@@ -71,4 +88,6 @@ export function getWoods() {
     payload: request
   }
 }
+
+
 

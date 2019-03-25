@@ -63,7 +63,7 @@ const FormField = ({ formData, change, id }) => {
                 formData.config.options.map((item, i) => {
                   return (
                     <option 
-                      key={i}
+                      key={item.value}
                       value={item.key}
                     >
                       {item.value}
