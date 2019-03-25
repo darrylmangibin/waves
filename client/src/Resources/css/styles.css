@@ -902,3 +902,6 @@ footer .business_nfo .nfo {
     background-position: center center !important;
     border: 1px solid #eaeaea;
 }
+.dropzone_box .wrap:hover {
+  cursor: pointer;
+}
