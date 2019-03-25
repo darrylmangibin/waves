@@ -22,6 +22,15 @@ const FormField = ({ formData, change, id }) => {
       case('input'):
         formTemplate = (
           <div className="formBlock">
+            {
+              formData.showLabel ?
+                (
+                  <div className="label_inputs">
+                    {formData.config.label}
+                  </div>
+                )
+              : null
+            }
             <input 
               {...formData.config}
               value={formData.value}
@@ -31,7 +40,64 @@ const FormField = ({ formData, change, id }) => {
             {showError()}
           </div>
         )
-      break
+      break;
+      case('select'):
+        formTemplate = (
+          <div className="formBlock">
+            {
+              formData.showLabel ?
+                (
+                  <div className="label_inputs">
+                    {formData.config.label}
+                  </div>
+                )
+              : null
+            }
+            <select
+              value={formData.value}
+              onBlur={(e) => change({e, id, blur:true})}
+              onChange={(e) => change({e, id})}
+            >
+              <option value="">Select one</option>
+              {
+                formData.config.options.map((item, i) => {
+                  return (
+                    <option 
+                      key={i}
+                      value={item.key}
+                    >
+                      {item.value}
+                    </option>
+                  )
+                })
+              }
+            </select>
+            {showError()}
+          </div>
+        )
+      break;
+      case('textarea'):
+        formTemplate = (
+          <div className="formBlock">
+            {
+              formData.showLabel ?
+                (
+                  <div className="label_inputs">
+                    {formData.config.label}
+                  </div>
+                )
+              : null
+            }
+            <textarea 
+              {...formData.comfig}
+              value={formData.value}
+              onBlur={(e) => change({e, id, blur:true})}
+              onChange={(e) => change({e, id})}
+            />
+            {showError()}
+          </div>
+        )
+      break;
       default:
         formTemplate = null
     }
