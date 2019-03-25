@@ -46,7 +46,6 @@ app.post('/api/product/shop', (req, res) => {
         findArgs[key] = req.body.filters[key]
       }
     }
-    console.log(findArgs)
   }
   Product.find(findArgs)
   .populate('brand')

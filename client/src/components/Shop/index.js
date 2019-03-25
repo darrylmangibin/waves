@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getBrands, getWoods, getProductsToShop } from '../../actions/products_actions';
 import CollapseCheckbox from '../utils/collapseCheckbox';
 import CollapseRadio from '../utils/collapseRadio';
+import LoadMoreCards from './LoadMoreCards';
 
 import { frets, price } from '../utils/Form/fixed_categories';
 
@@ -70,6 +71,20 @@ class Shop extends Component {
     })
   }
 
+  loadMoreCards = () => {
+    let skip = this.state.skip + this.state.limit;
+    this.props.dispatch(getProductsToShop(
+      skip,
+      this.state.limit,
+      this.state.filters,
+      this.props.products.toShop
+    )).then(() => {
+      this.setState({
+        skip
+      })
+    })
+  }
+
   render() {
     const products = this.props.products;
     return (
@@ -106,7 +121,20 @@ class Shop extends Component {
               />
             </div>
             <div className="right">
-              right
+              <div className="shop_options">
+                <div className="shop_grids clear">
+                  GRIDS
+                </div>
+                <div>
+                  <LoadMoreCards 
+                    grid={this.state.grid}
+                    limit={this.state.limit}
+                    size={products.toShopSize}
+                    products={products.toShop}
+                    loadMore={() =>this.loadMoreCards()}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
