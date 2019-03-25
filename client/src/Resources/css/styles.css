@@ -587,6 +587,10 @@ footer .business_nfo .nfo {
     font-weight: 700;
 }
 
+.collapse_items_wrapper li:hover {
+  cursor: pointer;
+}
+
 .grid_btn {
     float: right;
     padding: 10px 10px;
