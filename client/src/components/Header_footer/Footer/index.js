@@ -6,8 +6,9 @@ import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
 
 
-const Footer = () => {
+const Footer = ({ data }) => {
   return (
+    data.siteData ?
     <footer className="bck_b_dark">
       <div className="container">
         <div className="logo">
@@ -27,7 +28,7 @@ const Footer = () => {
                     Address
                   </div>
                   <div>
-                    Pob. Este, Sta. Cruz
+                    {data.siteData[0].address}
                   </div>
                 </div>
               </div>
@@ -41,7 +42,7 @@ const Footer = () => {
                     Phone
                   </div>
                   <div>
-                    09064856933
+                    {data.siteData[0].phone}
                   </div>
                 </div>
               </div>
@@ -55,7 +56,7 @@ const Footer = () => {
                     Working hours
                   </div>
                   <div>
-                    Mon-Sun/ 9am-8pm
+                    {data.siteData[0].hours}
                   </div>
                 </div>
               </div>
@@ -69,7 +70,7 @@ const Footer = () => {
                     Email
                   </div>
                   <div>
-                    darrylmangibin@gmail.com
+                    {data.siteData[0].email}
                   </div>
                 </div>
               </div>
@@ -86,6 +87,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    : null
   )
 }
 

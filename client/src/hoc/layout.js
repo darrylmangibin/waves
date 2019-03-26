@@ -1,8 +1,17 @@
 import React from 'react';
 import Header from '../components/Header_footer/Header';
 import Footer from '../components/Header_footer/Footer';
+import { connect } from 'react-redux';
+import { getSiteData } from '../actions/site_action';
 
 class Layout extends React.Component {
+
+  componentDidMount() {
+    if(Object.keys(this.props.site).length === 0) {
+      this.props.dispatch(getSiteData())
+    } 
+  }
+
   render() {
     return (
       <div>
@@ -10,10 +19,16 @@ class Layout extends React.Component {
         <div className="page_container">
           {this.props.children}
         </div>
-        <Footer />
+        <Footer data={this.props.site}/>
       </div>
     )
   }
 }
 
-export default Layout;
+const mapStateToProps = (state) => {
+  return {
+    site: state.site
+  }
+}
+
+export default connect(mapStateToProps)(Layout);

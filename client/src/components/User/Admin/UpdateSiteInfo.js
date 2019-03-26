@@ -3,6 +3,8 @@ import FormField from '../../utils/Form/FormField';
 import { update, generateData, isFormValid, populateFields } from '../../utils/Form/formActions';
 import { connect } from 'react-redux';
 
+import { getSiteData, updateSiteData } from '../../../actions/site_action';
+
 class UpdateSiteInfo extends Component {
 
   state = {
@@ -81,6 +83,16 @@ class UpdateSiteInfo extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.dispatch(getSiteData()).then(() => {
+      console.log(this.props.site.siteData[0])
+      const newFormData = populateFields(this.state.formData, this.props.site.siteData[0]);
+      this.setState({
+        formData: newFormData
+      })
+    })
+  }
+
   updateForm = (element) => {
     const newFormdata = update(element, this.state.formData, 'site_info');
     this.setState({
@@ -96,7 +108,17 @@ class UpdateSiteInfo extends Component {
     let formIsValid = isFormValid(this.state.formData, 'site_info');
 
     if (formIsValid) {
-      
+      this.props.dispatch(updateSiteData(dataToSubmit)).then(() => {
+        this.setState({
+          formSuccess: true
+        }, () => {
+          setTimeout(() => {
+            this.setState({
+              formSuccess: false
+            })
+          }, 2000);
+        })
+      })
     } else {
       this.setState({
         formError: true
