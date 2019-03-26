@@ -59,7 +59,6 @@ class Card extends Component {
             <MyButton 
               type="bag_link"
               runAction={() => {
-                console.log('added to cart')
               }}
             />
           </div>

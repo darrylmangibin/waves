@@ -184,7 +184,6 @@ app.get('/api/users/auth', auth, (req, res) => {
 
 app.post('/api/users/uploadimage', auth, admin, formidable(), (req, res) => {
   cloudinary.uploader.upload(req.files.file.path, (result) => {
-    console.log(result);
     res.status(200).send({
       public_id: result.public_id,
       url: result.url
@@ -231,7 +230,6 @@ app.post('/api/users/register', (req, res) => {
 
 // LOGIN
 app.post('/api/users/login', (req, res) => {
-  console.log(res)
   User.findOne({ 'email': req.body.email }, (err, user) => {
     if(!user) {
       return res.json({ loginSuccess: false, message: 'Auth failed, email not found' });

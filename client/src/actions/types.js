@@ -11,4 +11,6 @@ export const ADD_WOOD = 'add_wood';
 export const GET_WOODS = 'get_woods';
 export const GET_PRODUCTS_TO_SHOP = 'get_product_to_shop';
 export const ADD_PRODUCT = 'add_product';
-export const CLEAR_PRODUCT = 'clear_product'
+export const CLEAR_PRODUCT = 'clear_product';
+export const GET_PRODUCT_DETAIL = 'get_product_detail';
+export const CLEAR_PRODUCT_DETAIL = 'clear_product_detail';

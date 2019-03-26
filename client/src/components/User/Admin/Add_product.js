@@ -267,9 +267,7 @@ class AddProduct extends React.Component {
 
     if (formIsValid) {
       this.props.dispatch(addProduct(dataToSubmit)).then(() => {
-        console.log(this.props.products.addProduct)
         if(this.props.products.addProduct.success) {
-          console.log(this.state)
           this.resetFieldsHandler()
         } else {
           this.setState({
