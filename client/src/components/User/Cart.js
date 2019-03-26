@@ -8,7 +8,9 @@ import fafrown from  '@fortawesome/fontawesome-free-solid/faFrown';
 import faSmile from '@fortawesome/fontawesome-free-solid/faSmile';
 
 import UserProductBlock from '../utils/User/ProductBlock';
+import Paypal from '../utils/paypal';
 
+  // AeMG9md3Y5XSBEihJvSAiXSzhd__7woyTWcFzr3qffA-ZNY4LvijJ_UM_Xe7tSpSF9b6heZ8euOEOmSP
 
 class Cart extends Component {
 
@@ -71,6 +73,21 @@ class Cart extends Component {
     })
   }
 
+  transactionError = (data) => {
+    console.log('Paypal error')
+  }
+
+  transactionCancel = () => {
+    console.log('Transaction Cancelled')
+  }
+
+  transactionSuccess = (data) => {
+    this.setState({
+      showTotal: false,
+      showSuccess: true
+    })
+  }
+
   render() {
     return (
       <UserLayout>
@@ -112,7 +129,12 @@ class Cart extends Component {
           {
             this.state.showTotal ? (
               <div className="paypal_button_container">
-                Paypal
+                <Paypal 
+                  toPay={this.state.total}
+                  transactionError={(data) => this.transactionError(data)}
+                  transactionCancel={(data) => this.transactionCancel(data)}
+                  onSuccess={(data) => this.transactionSuccess(data)}
+                />
               </div>
             )
 
