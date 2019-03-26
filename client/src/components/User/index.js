@@ -1,6 +1,7 @@
 import React from 'react';
 import UserLayout from '../../hoc/user';
 import MyButton from '../utils/button';
+import UserHistoryBlock from '../utils/User/historyBlock';
 
 const UserDashBoard = ({ user }) => {
   return (
@@ -19,12 +20,19 @@ const UserDashBoard = ({ user }) => {
             linkTo="/user/user_profile"
           />
         </div>
-        <div className="user_nfo_panel">
-          <h1>History purchases</h1>
-          <div className="user_product_block_wrapper">
-            History
-          </div>
-        </div>
+        {
+          user.userData.history ? (
+            <div className="user_nfo_panel">
+              <h1>History purchases</h1>
+              <div className="user_product_block_wrapper">
+                <UserHistoryBlock 
+                  products={user.userData.history}
+                />
+              </div>
+            </div>
+          )
+          : null
+        }
       </div>
     </UserLayout>
   )
