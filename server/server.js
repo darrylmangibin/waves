@@ -249,12 +249,12 @@ app.post('/api/users/login', (req, res) => {
 app.post('/api/users/addToCart', auth, (req, res) => {
   User.findOne({_id: req.user._id}, (err, doc) => {
     let duplicate = false;
+        
     doc.cart.forEach((item) => {
-      if(item.id === req.query.productId) {
+      if(item.id == req.query.productId) {
         duplicate = true
       }
     })
-
     if(duplicate) {
       User.findOneAndUpdate(
         {
