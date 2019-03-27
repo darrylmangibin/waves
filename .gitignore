@@ -3,3 +3,4 @@ client/node_modules
 build/
 jsons/
 .env
+config/keys_dev.js
