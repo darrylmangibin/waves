@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
     margin:0;
     padding:0;
@@ -6,7 +10,7 @@ body {
 }
 
 .container {
-    width:1100px;
+    max-width:900px;
     margin: 0 auto;
 }
 .page_container {
@@ -253,9 +257,12 @@ header {
 
 header .logo {
     font-family: 'Monoton', cursive;
+    justify-content: center;
     color: #ffffff;
+    display: flex;
     font-size: 40px;
-    padding: 11px 0px;
+    align-items: center;
+    height: 100%;
 }
 
 header a {
@@ -335,6 +342,7 @@ footer .wrapper {
 footer .left,
 footer .right {
     flex: 1;
+    padding: 0 15px;
 }
 
 footer .business_nfo {
@@ -366,7 +374,8 @@ footer .business_nfo .nfo {
 .featured_container .featured_image {
     position:relative;
     background-size: cover !important;
-    background-position: center left !important;
+    background-position: center !important;
+    background-repeat: no-repeat;
 }
 
 .featured_container .featured_action {
@@ -404,7 +413,7 @@ footer .business_nfo .nfo {
 .home_promotion .home_promotion_img {
     height: 400px;
     background-size: cover !important;
-    background-position: top center !important;
+    background-position: center !important;
     padding: 73px;
     box-sizing: border-box;
 }
@@ -572,6 +581,7 @@ footer .business_nfo .nfo {
 
 .shop_wrapper {
     display:flex;
+    padding: 0 20px;
 }
 
 .shop_wrapper .left {
@@ -579,7 +589,7 @@ footer .business_nfo .nfo {
 }
 
 .shop_wrapper .right {
-    width: 800px;
+    max-width: 800px;
 }
 
 .collapse_title span {
@@ -770,6 +780,7 @@ footer .business_nfo .nfo {
     display:flex;
     margin-bottom: 50px;
     min-height: 700px;
+    padding: 0 15px;
 }
 
 .user_container .user_left_nav {
@@ -794,6 +805,7 @@ footer .business_nfo .nfo {
     background: #f8f8f8;
     padding: 20px;
     margin-top: 20px;
+    word-wrap: break-word;
 }
 
 .user_container .user_nfo_panel h1 {
@@ -904,4 +916,138 @@ footer .business_nfo .nfo {
 }
 .dropzone_box .wrap:hover {
   cursor: pointer;
+}
+
+.paypal-button {
+  text-align: center !important;
+}
+.zoid-outlet {
+  width: 275px !important;
+}
+
+
+/* ===========================================================
+
+
+==============================================================*/
+
+@media (max-width: 767px) {
+  .card_item_wrapper {
+    width: 50%;
+  }
+  .nfo {
+    font-size: 12px;
+  }
+  footer h2 {
+    text-align: center;
+  }
+  footer .business_nfo {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .business_nfo .tag {
+    width: 100%;
+  }
+  .home_promotion .title {
+    font-size: 50px !important;
+  }
+  .home_promotion .low_title {
+    font-size: 30px !important;
+  }
+  .register_login_container {
+    flex-direction: column;
+  }
+  .card_item_wrapper .grid_bars {
+    flex-direction: column;
+    width: 100%;
+  } 
+  .card_item_wrapper.grid_bars .actions {
+    float: none;
+  }
+  .shop_options {
+    margin: 0
+  }
+  .card_block_shop .card_item_wrapper {
+    width: 100%;
+  }
+  .image {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .actions {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .shop_wrapper {
+    flex-direction: column;
+  }
+  .collapse_items_wrapper {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+  .user_container {
+    flex-direction: column;
+  }
+  .card_item_wrapper.grid_bars .image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 569px) {
+  .card_block_shop .card_item_wrapper {
+    width: 100%;
+  }
+  .grid_bars {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  table {
+    font-size: 12px;
+  }
+  header .container .right .top {
+    font-size: 12px !important;
+    padding: 10px 0;
+    text-align: left;
+  }
+  .user_product_block .item:first-child {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  header .logo {
+    font-size: 30px;
+  }
+  footer h2 {
+    line-height: 1;
+  }
+  .home_promotion .title {
+    font-size: 30px !important;
+  }
+
+  .home_promotion .low_title {
+    font-size: 18px !important;
+  }
+  .top {
+    font-size: 12px;
+  }
+  .user_container .user_right {
+    padding: 0;
+  }
+  .user_container .user_history_info {
+    background: transparent;
+    padding: 0
+  }
+  .user_product_block .item {
+    font-size: 12px;
+  }
+  .admin_two_column {
+    flex-direction: column;
+  }
 }

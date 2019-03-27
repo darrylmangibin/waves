@@ -19,7 +19,7 @@ const UserHistoryBlock = (props) => {
 
   return (
     <div className="history_blocks">
-      <table>
+      <table style={{display: 'inline-table'}}>
         <thead>
           <tr>
             <th>Date of purchase</th>

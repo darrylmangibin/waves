@@ -22,7 +22,7 @@ const UserDashBoard = ({ user }) => {
         </div>
         {
           user.userData.history ? (
-            <div className="user_nfo_panel">
+            <div className="user_nfo_panel user_history_info">
               <h1>History purchases</h1>
               <div className="user_product_block_wrapper">
                 <UserHistoryBlock 

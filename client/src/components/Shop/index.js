@@ -131,7 +131,9 @@ class Shop extends Component {
             </div>
             <div className="right">
               <div className="shop_options">
-                <div className="shop_grids clear">
+                <div className="shop_grids clear"
+                  style={{paddingRight: '20px'}}
+                >
                   <div
                     className={`grid_btn ${this.state.grid ? '' : 'active'}`}
                     onClick={() => this.handleGrid()}
