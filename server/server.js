@@ -10,8 +10,12 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, () => {
+mongoose.connect(process.env.MONGODB_URI,{
+  useNewUrlParser:true
+}, () => {
   console.log('mongoDB connected')
+}).catch((err) => {
+  console.log('failed')
 })
 
 app.use(express.static('client/build'))
