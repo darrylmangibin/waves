@@ -996,6 +996,20 @@ footer .business_nfo .nfo {
   .card_item_wrapper.grid_bars .image {
     width: 100%;
   }
+  .product_detail_wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .product_image_container {
+    padding-right: 0 !important;
+  }
+  .product_detail_wrapper .right h1 {
+    text-align: center;
+  }
+  .product_detail_wrapper .right {
+    padding: 0 30px;
+  }
 }
 
 @media (max-width: 569px) {
